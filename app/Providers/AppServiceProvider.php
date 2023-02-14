@@ -25,10 +25,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Config::set([
-            'fYear' => DB::select('SELECT CASE WHEN DATE_PART(\'MONTH\',CURRENT_TIMESTAMP) <= 3
-            THEN concat((DATE_PART(\'YEAR\',CURRENT_TIMESTAMP) - 1),\'-\', CAST(DATE_PART(\'YEAR\',CURRENT_TIMESTAMP) as integer) % 100)
-            ELSE concat(DATE_PART(\'YEAR\',CURRENT_TIMESTAMP),\'-\',(CAST(DATE_PART(\'YEAR\',CURRENT_TIMESTAMP) as integer)  % 100)+1) END as FYear')
-        ]);
+        // Config::set([
+        //     'fYear' => DB::select('SELECT CASE WHEN DATE_PART(\'MONTH\',CURRENT_TIMESTAMP) <= 3
+        //     THEN concat((DATE_PART(\'YEAR\',CURRENT_TIMESTAMP) - 1),\'-\', CAST(DATE_PART(\'YEAR\',CURRENT_TIMESTAMP) as integer) % 100)
+        //     ELSE concat(DATE_PART(\'YEAR\',CURRENT_TIMESTAMP),\'-\',(CAST(DATE_PART(\'YEAR\',CURRENT_TIMESTAMP) as integer)  % 100)+1) END as FYear')
+        // ]);
     }
 }

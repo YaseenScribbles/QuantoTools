@@ -19,11 +19,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return redirect()->route('productstatus');
+})->middleware('auth');
 
 Route::get('login', function(){        
-    return view ('login',compact('fYear'));
+    return view ('login');
 })->middleware('guest')->name('login');
 
 Route::get('logout',function(Request $request){   
