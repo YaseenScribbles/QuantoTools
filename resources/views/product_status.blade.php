@@ -8,14 +8,14 @@
         @csrf
         <div class="form-group">
             <div class="input-wrapper">
-                <label class="label">From</label>
+                <label class="label pb-1">From</label>
                 <input type="date" class="form-control" id="fromDate" name="fromDate" value="2022-08-22" min="2022-08-22" required>               
             </div>
         </div>
 
         <div class="form-group">
             <div class="input-wrapper">
-                <label class="label">To</label>
+                <label class="label pb-1">To</label>
                 <input type="date" class="form-control" id="toDate" name="toDate" required> 
                 <!-- value="@php date('Y').'-'.date('m').'-'.date('d') @endphp"                 -->
             </div>
