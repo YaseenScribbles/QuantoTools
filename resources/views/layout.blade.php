@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Taqua Silks</title>
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">    
+    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> 
+    <link rel="stylesheet" href="{{asset('css/app.css')}}"> 
+    <script src="{{asset('js/app.js')}}" defer></script>      
 </head>
 <body>
     
@@ -34,7 +36,7 @@
     <div class="row mt-5">
         <div class="appBottomMenu bg-info text-light">
             <a href="#" class="item">
-                <div class="col">
+                <div class="col">                                       
                     <h5 style="color: white" id="fYear"></h5>                    
                 </div>
             </a>
@@ -65,7 +67,7 @@
     <script src="{{asset('assets/js/lib/bootstrap.min.js')}}"></script>
     <script src="{{asset('assets/js/base.js')}}"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.0.0/dist/ionicons/ionicons.js"></script>    
-    <script src="{{asset('assets/js/plugins/circle-progress.min.js')}}"></script>
+    <script src="{{asset('assets/js/plugins/circle-progress.min.js')}}"></script>         
     <script>
 
         function updateModal(){
@@ -103,7 +105,7 @@
             var nextYr2 = today.getFullYear().toString();
             fiscalYr = (today.getFullYear() - 1).toString() + "-" + nextYr2.charAt(2) + nextYr2.charAt(3);
         }
-        console.log(fiscalYr);
+        
         document.getElementById('fYear').innerText = "TAQUA SILKS " + fiscalYr;
 
         };

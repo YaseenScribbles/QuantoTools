@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="wide-block pb-1 pt-2 mt-4">
+<div class="wide-block pb-1 pt-4">
 
     <form method="GET" action="{{route('productstatusreport')}}" id="myForm">
         @csrf
@@ -24,7 +24,7 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <label class="label">Supplier</label>
-                <select class="custom-select" id="supplierId" name="supplierId" required>
+                <select id="supplierId" name="supplierId" autocomplete="off" required>
                     <option value="0">Select a supplier</option>
                     @foreach($suppliers as $supplier)
                     <option value="{{$supplier->id}}">{{ $supplier->name }}</option> 
@@ -36,7 +36,7 @@
         <div class="form-group boxed">
             <div class="input-wrapper">
                 <label class="label">Grn No</label>
-                <select class="form-control custom-select" id="grnno" name="grnNo"> 
+                <select class="form-control custom-select" id="grnno" name="grnNo" autocomplete="off"> 
                 <option value="0">Select a grnno</option>                                                          
                 </select>
             </div>
@@ -62,6 +62,14 @@
 
 <script>
 
+    // new TomSelect("#supplierId",{
+    //     create: false,
+    // });
+
+    // new TomSelect("#grnno",{
+    //     create: false,
+    // });
+               
     const dateInput = document.getElementById('toDate');    
     dateInput.value = formatDate();
 
@@ -76,7 +84,13 @@
         padTo2Digits(date.getDate()),
     ].join('-');
     }
-          
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+
+        new TomSelect("#supplierId",{});
+                
+    });
+   
     document.querySelector("#supplierId").addEventListener('change',function(){
         var grnnos = @json($grnnos);                        
         var grnDropdown = document.querySelector("#grnno");
@@ -85,13 +99,17 @@
         grnData.sort(function(a,b){
             return b.grnid - a.grnid;
         });  
-        grnDropdown.innerHTML = "";
+        grnDropdown.innerHTML = "";             
+        var option = document.createElement("option");
+        option.value = 0;
+        option.textContent = "Select a grn no";                     
+        grnDropdown.appendChild(option);
         for(var data in grnData){
             var opt = document.createElement("option");                       
             opt.value = grnData[data].lrentryno;
-            opt.textContent = grnData[data].lrentryno;            
-            grnDropdown.appendChild(opt);
-        }            
+            opt.textContent = grnData[data].lrentryno; 
+            grnDropdown.appendChild(opt);            
+        }                
     });
 
     function validate() {
