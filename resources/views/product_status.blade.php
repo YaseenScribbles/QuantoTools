@@ -114,10 +114,14 @@
 
     function validate() {
         var supplierDropdown = document.querySelector('#supplierId')
+        var grnDropdown = document.querySelector('#grnno');
         if(supplierDropdown.value == 0){
             alert('Please select a supplier!');
             return;
-        }
+        } else if (grnDropdown.options.length == 1) {
+            alert('Invoices not available!');
+            return;
+        }       
         document.getElementById("myForm").submit();
     }
 
